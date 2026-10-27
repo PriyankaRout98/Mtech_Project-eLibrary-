@@ -1,3 +1,73 @@
+#navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+}
+
 #eLibTitle {
     display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#eLibTitle h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.search-container {
+    flex-grow: 1;             
+    max-width: 300px;         
+    margin: 0 30px;           
+}
+
+.search-container form {
+    display: flex;
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.search-container button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-container button:hover {
+    background-color: #2980b9;
+}
+
+#navbar span {
+    display: flex;
+    gap: 20px;
+}
+
+#navbar span a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+#navbar span a:hover {
+    color: #3498db;
 }
