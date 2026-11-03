@@ -40,10 +40,19 @@
     </div>
 </div>
 
-<div id="contact us">
-    <h1>Contact Us</h1>
-    
-</div>
+<h1>Contact Us</h1>
+  <div class="contact-section">
+
+    <div id="leftContact">
+      <p>Mail us at: <a href="mailto:support@example.com">support@example.com</a></p>
+      <p>Call us at: <a href="tel:+546488294364">+54 648-829-4364</a></p>
+    </div>
+
+    <div id="rightContact">
+      <img src="Photos/contact.jpg" alt="Person using mobile phone">
+    </div>
+
+  </div>
 
 <footer class="site-footer">
     <div class="footer-content">
