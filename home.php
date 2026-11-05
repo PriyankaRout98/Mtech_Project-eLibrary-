@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <div class="page-container">
+        <!-- <main class="content"> -->
+
     <div id="navbar">
         <div id="eLibTitle">
             <!-- <img id="logoimg" src="/Photos/logo1.jpg" alt="eLibrary"></img> -->
@@ -40,10 +43,12 @@
     </div>
 </div>
 
-<h1>Contact Us</h1>
+<div id="contactUs">
+  <h1>Contact Us</h1>
   <div class="contact-section">
 
     <div id="leftContact">
+        <h2>Connect with us at</h2>
       <p>Mail us at: <a href="mailto:support@example.com">support@example.com</a></p>
       <p>Call us at: <a href="tel:+546488294364">+54 648-829-4364</a></p>
     </div>
@@ -51,8 +56,9 @@
     <div id="rightContact">
       <img src="Photos/contact.jpg" alt="Person using mobile phone">
     </div>
-
   </div>
+  </div>
+  <!-- </main> -->
 
 <footer class="site-footer">
     <div class="footer-content">
@@ -72,6 +78,6 @@
 </footer>
 
 
-
+</div>
 </body>
 </html>
