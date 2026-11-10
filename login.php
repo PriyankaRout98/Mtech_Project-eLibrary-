@@ -38,7 +38,7 @@
                         <input type="text" id="username" name="username" /><br />
                         <label for="password">Password:</label><br />
                         <input type="password" id="password" name="password" /><br />
-                        <input class="submit" type="button" value="Submit" id="submit">
+                        <input class="submit" type="button" value="Submit" id="submitforlogin">
                     </form>
                     <h3>If not registered Please Signup to proceed</h3>
                     <a id="signupbtn" href="signup.php">Sign Up</a>
@@ -69,7 +69,7 @@
             'password': password
         })
 
-        let resp = await fetch("api.php", {
+        let resp = await fetch("api-login.php", {
             'method': 'POST',
             'header': 'Content-Type: application/json;',
             'body': payload,
@@ -81,12 +81,12 @@
         return 0;
     }
 
-    document.querySelector('#submit').addEventListener('click', (e) => {
+    document.querySelector('#submitforlogin').addEventListener('click', (e) => {
 
 
         let username = document.querySelector('#username').value
         let password = document.querySelector('#password').value
-console.log(username, password);
+// console.log(username, password);
 
         send_post_request(username, password)
     })

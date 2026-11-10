@@ -46,7 +46,7 @@
                         <input type="email" id="email" name="email" /><br />
                         <label for="password">Password:</label><br />
                         <input type="password" id="password" name="password" /><br />
-                        <input class="submit" type="submit" value="Submit">
+                        <input class="submit" type="submit" value="Submit" id="submitforsignup">
                     </form>
                     <h3>If already registered Please Login to proceed</h3>
                     <a id="loginbtn" href="login.php">Log In</a>
@@ -70,5 +70,46 @@
                 </div>
             </footer>
         </div>
+
+
+<script>
+    async function send_post_request(firstname, lastname, username, phone, email, password) {
+        let payload = JSON.stringify({
+            'firstname': firstname,
+            'lastname': lastname,
+            'username': username,
+            'phone': phone,
+            'email': email,
+            'password': password
+        })
+
+        let resp = await fetch("api-signup.php", {
+            'method': 'POST',
+            'header': 'Content-Type: application/json;',
+            'body': payload,
+        })
+
+        let response = await resp.json();
+
+        console.log(response);
+        return 0;
+    }
+
+    document.querySelector('#submitforsignup').addEventListener('click', (e) => {
+e.preventDefault(); 
+        let firstname = document.querySelector('#firstname').value
+        let lastname = document.querySelector('#lastname').value
+        let username = document.querySelector('#username').value
+        let phone = document.querySelector('#phone').value
+        let email = document.querySelector('#email').value
+        let password = document.querySelector('#password').value
+
+ console.log(firstname, lastname, username, phone, email, password);
+
+        send_post_request(firstname, lastname, username, phone, email, password)
+    })
+    </script>
+
+
     </body>
 </html>
