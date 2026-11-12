@@ -4,8 +4,9 @@ header('Content-Type: application/json;');
 $raw = file_get_contents("php://input");
 $in = json_decode($raw, true);
 
-$username = isset($in['username']);
-$password = isset($in['password']);
+$username = $in['username'] ?? '';
+$password = $in['password'] ?? '';
+
 
 $dbFile = __DIR__ . DIRECTORY_SEPARATOR . 'userInformation.db';
 $payload = [];
@@ -29,7 +30,7 @@ try {
     
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && $password === $user['password']) {
         $payload = [
             "status" => "success",
             "message" => "Login successful!",

@@ -64,21 +64,39 @@
 
 <script>
     async function send_post_request(username, password) {
-        let payload = JSON.stringify({
+        try {
+            let payload = JSON.stringify({
             'username': username,
             'password': password
         })
 
         let resp = await fetch("api-login.php", {
             'method': 'POST',
-            'header': 'Content-Type: application/json;',
+            headers: {
+                    "Content-Type": "application/json"
+                },
             'body': payload,
         })
 
         let response = await resp.json();
 
         console.log(response);
-        return 0;
+
+           console.log("Parsed response:", response);
+
+            if (response.status && response.status.trim() === "success") {
+                alert("User Logged in successfully! Welcome " + response.user.username);
+                window.location.href = "home.php";
+            } else {
+                alert("Error: " + (response.message || "Login failed"));
+            }
+        } catch (err) {
+            console.error("Request failed:", err);
+            alert("Something went wrong. Check the browser console.");
+        }
+
+
+        // return 0;
     }
 
     document.querySelector('#submitforlogin').addEventListener('click', (e) => {

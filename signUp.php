@@ -71,44 +71,55 @@
             </footer>
         </div>
 
-
 <script>
     async function send_post_request(firstname, lastname, username, phone, email, password) {
-        let payload = JSON.stringify({
-            'firstname': firstname,
-            'lastname': lastname,
-            'username': username,
-            'phone': phone,
-            'email': email,
-            'password': password
-        })
+        try {
+            let payload = JSON.stringify({
+                firstname,
+                lastname,
+                username,
+                phone,
+                email,
+                password
+            });
 
-        let resp = await fetch("api-signup.php", {
-            'method': 'POST',
-            'header': 'Content-Type: application/json;',
-            'body': payload,
-        })
+            let resp = await fetch("api-signup.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: payload
+            });
 
-        let response = await resp.json();
+            let response = await resp.json();
+            // console.log("Parsed response:", response);
 
-        console.log(response);
-        return 0;
+            if (response.status && response.status.trim() === "success") {
+                alert("User registered successfully! Please login to continue.");
+                window.location.href = "login.php";
+            } else {
+                alert("Error: " + (response.message || "Registration failed"));
+            }
+        } catch (err) {
+            console.error("Request failed:", err);
+            alert("Something went wrong. Check the browser console.");
+        }
     }
 
-    document.querySelector('#submitforsignup').addEventListener('click', (e) => {
-e.preventDefault(); 
-        let firstname = document.querySelector('#firstname').value
-        let lastname = document.querySelector('#lastname').value
-        let username = document.querySelector('#username').value
-        let phone = document.querySelector('#phone').value
-        let email = document.querySelector('#email').value
-        let password = document.querySelector('#password').value
+    document.querySelector(".signup").addEventListener("submit", (e) => {
+        e.preventDefault();
 
- console.log(firstname, lastname, username, phone, email, password);
+        let firstname = document.querySelector("#firstname").value;
+        let lastname = document.querySelector("#lastname").value;
+        let username = document.querySelector("#username").value;
+        let phone = document.querySelector("#phone").value;
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
 
-        send_post_request(firstname, lastname, username, phone, email, password)
-    })
-    </script>
+        send_post_request(firstname, lastname, username, phone, email, password);
+    });
+</script>
+
 
 
     </body>
